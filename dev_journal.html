@@ -1,0 +1,515 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Development Journal — Adventures of the Dice</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <style>
+        .journal-page {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+
+        .journal-hero {
+            text-align: center;
+            background: linear-gradient(135deg, #1a1a2e, #16213e);
+            color: #e0e0e0;
+            padding: 2rem;
+            border-radius: 14px;
+            margin-bottom: 2rem;
+        }
+
+        .journal-hero h1 { font-size: 1.75rem; color: #ffd600; margin-bottom: 0.4rem; }
+        .journal-hero p  { color: #adb5bd; font-size: 0.9rem; }
+
+        .section-title {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #1b4332;
+            margin: 2rem 0 1rem;
+            padding-bottom: 0.4rem;
+            border-bottom: 2px solid #c8e6c9;
+        }
+
+        .journal-entry {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 1px 4px rgba(0,0,0,0.08);
+            margin-bottom: 1.25rem;
+            overflow: hidden;
+        }
+
+        .entry-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0.85rem 1.25rem;
+            background: #f8f9fa;
+            border-left: 4px solid #2c6e49;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .entry-date {
+            font-weight: 700;
+            color: #1b4332;
+            font-size: 0.95rem;
+        }
+
+        .entry-sprint {
+            font-size: 0.75rem;
+            font-weight: 700;
+            padding: 0.2rem 0.65rem;
+            border-radius: 12px;
+            background: #e8f5e9;
+            color: #2e7d32;
+        }
+
+        .entry-author {
+            font-size: 0.8rem;
+            color: #6c757d;
+        }
+
+        .entry-body {
+            padding: 1rem 1.25rem;
+        }
+
+        .entry-section {
+            margin-bottom: 0.85rem;
+        }
+
+        .entry-section h4 {
+            font-size: 0.78rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #6c757d;
+            margin-bottom: 0.35rem;
+        }
+
+        .entry-section p,
+        .entry-section ul {
+            font-size: 0.88rem;
+            color: #343a40;
+            line-height: 1.6;
+            margin: 0;
+        }
+
+        .entry-section ul {
+            padding-left: 1.25rem;
+        }
+
+        .entry-section ul li {
+            margin-bottom: 0.2rem;
+        }
+
+        .tag {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 0.15rem 0.5rem;
+            border-radius: 10px;
+            margin-right: 0.35rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .tag-build   { background: #d4edda; color: #155724; }
+        .tag-fix     { background: #f8d7da; color: #721c24; }
+        .tag-design  { background: #d1ecf1; color: #0c5460; }
+        .tag-test    { background: #fff3cd; color: #856404; }
+        .tag-deploy  { background: #e2d9f3; color: #4a235a; }
+        .tag-doc     { background: #fde8d8; color: #7d3c0a; }
+    </style>
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="header-container">
+            <a href="index.php" class="logo">
+                <span class="logo-icon">🎲</span>
+                <span class="logo-text">Adventures of the Dice</span>
+            </a>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="team.html">Team</a></li>
+                    <li><a href="Sprint_log.html">Sprint Log</a></li>
+                    <li><a href="login.php">Login</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="journal-page">
+
+            <div class="journal-hero">
+                <h1>📓 Development Journal</h1>
+                <p>Daily notes — design decisions, bugs encountered, and lessons learned<br>
+                Adventures of the Dice | CSC 4370/6370 Spring 2026</p>
+            </div>
+
+            <!-- ==================== SPRINT 1 ==================== -->
+            <h2 class="section-title">Sprint 1 — April 7–9, 2026 | Project Setup</h2>
+
+            <div class="journal-entry">
+                <div class="entry-header">
+                    <span class="entry-date">April 7, 2026</span>
+                    <span class="entry-sprint">Sprint 1</span>
+                    <span class="entry-author">Dhanush Nagarajan</span>
+                </div>
+                <div class="entry-body">
+                    <div class="entry-section">
+                        <span class="tag tag-build">Build</span>
+                        <span class="tag tag-deploy">Deploy</span>
+                        <h4>What was built today</h4>
+                        <ul>
+                            <li>Created GitHub repository: <code>Dhanush_Adventures_0f_the_Dice</code> (public)</li>
+                            <li>Set up CODD server folder structure under <code>~dnagarajan1/WP/PW/</code></li>
+                            <li>Verified CODD URL accessible in browser</li>
+                            <li>Added M. Abhinaya as GitHub collaborator</li>
+                        </ul>
+                    </div>
+                    <div class="entry-section">
+                        <h4>Design Decision</h4>
+                        <p>Chose to name the folder <code>Dhanush_Adventures_0f_the_Dice</code> with a zero instead of letter O to match exactly what was specified in the project proposal. Verified this matches the GitHub repo name for consistency.</p>
+                    </div>
+                    <div class="entry-section">
+                        <h4>Bugs / Issues</h4>
+                        <p>None on day 1. CODD setup was straightforward.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="journal-entry">
+                <div class="entry-header">
+                    <span class="entry-date">April 8, 2026</span>
+                    <span class="entry-sprint">Sprint 1</span>
+                    <span class="entry-author">Dhanush Nagarajan</span>
+                </div>
+                <div class="entry-body">
+                    <div class="entry-section">
+                        <span class="tag tag-doc">Documentation</span>
+                        <h4>What was built today</h4>
+                        <ul>
+                            <li>Wrote initial README.md with project description, team info, CODD URL, setup instructions</li>
+                            <li>Added AI usage disclosure section to README (required to avoid penalty)</li>
+                            <li>Committed README to GitHub with message: <code>[S1][Dhanush] Add README with project description and AI disclosure</code></li>
+                        </ul>
+                    </div>
+                    <div class="entry-section">
+                        <h4>Design Decision</h4>
+                        <p>Decided to write the README in full on day 1 rather than at the end — the AI disclosure section is mandatory and a missing README carries a grading penalty. Better to have it done early.</p>
+                    </div>
+                    <div class="entry-section">
+                        <h4>Lessons Learned</h4>
+                        <p>The project spec requires AI usage to be disclosed with specific descriptions of what was generated vs written independently. Made note to keep track of this throughout development.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ==================== SPRINT 2 ==================== -->
+            <h2 class="section-title">Sprint 2 — April 10–12, 2026 | Authentication</h2>
+
+            <div class="journal-entry">
+                <div class="entry-header">
+                    <span class="entry-date">April 10, 2026</span>
+                    <span class="entry-sprint">Sprint 2</span>
+                    <span class="entry-author">Dhanush Nagarajan</span>
+                </div>
+                <div class="entry-body">
+                    <div class="entry-section">
+                        <span class="tag tag-build">Build</span>
+                        <h4>What was built today</h4>
+                        <ul>
+                            <li>Built <code>login.php</code> — POST form, session_start(), credential validation against users.txt</li>
+                            <li>Built <code>register.php</code> — form validation, password_hash(), flat file write to data/users.txt</li>
+                            <li>Built <code>includes/functions.php</code> — sanitizeInput(), loadUsers(), saveUser(), validateUsername(), validatePassword()</li>
+                        </ul>
+                    </div>
+                    <div class="entry-section">
+                        <h4>Design Decision</h4>
+                        <p>Used <code>filter_input(INPUT_POST, ...)</code> instead of <code>$_POST[]</code> directly throughout — this is explicitly required by the rubric for form security. Also used <code>password_hash()</code> with PASSWORD_DEFAULT for secure storage in the flat file.</p>
+                    </div>
+                    <div class="entry-section">
+                        <h4>Bugs / Issues</h4>
+                        <p>Initial issue with sticky form values not persisting on validation failure — fixed by storing <code>$stickyUsername</code> variable and echoing it back into the input's value attribute with htmlspecialchars().</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="journal-entry">
+                <div class="entry-header">
+                    <span class="entry-date">April 11, 2026</span>
+                    <span class="entry-sprint">Sprint 2</span>
+                    <span class="entry-author">Dhanush Nagarajan</span>
+                </div>
+                <div class="entry-body">
+                    <div class="entry-section">
+                        <span class="tag tag-build">Build</span>
+                        <span class="tag tag-deploy">Deploy</span>
+                        <h4>What was built today</h4>
+                        <ul>
+                            <li>Built <code>includes/session_check.php</code> — auth guard used on all protected pages</li>
+                            <li>Built <code>logout.php</code> — proper session_destroy() + cookie clearing + redirect</li>
+                            <li>Built <code>includes/header.php</code> and <code>includes/footer.php</code> for consistent layout</li>
+                            <li>Tested login/register flow end-to-end on CODD</li>
+                        </ul>
+                    </div>
+                    <div class="entry-section">
+                        <h4>Design Decision</h4>
+                        <p>Placed session_check.php as a require_once at the top of every protected page. This ensures no page can be accessed directly without a valid session — covers the edge case of direct URL access listed in the proposal.</p>
+                    </div>
+                    <div class="entry-section">
+                        <h4>Bugs / Issues</h4>
+                        <p>CODD server required the data/ folder to have write permissions for users.txt. Had to set correct file permissions via SFTP for the flat file writes to work.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ==================== SPRINT 3 ==================== -->
+            <h2 class="section-title">Sprint 3 — April 13–15, 2026 | Game Board</h2>
+
+            <div class="journal-entry">
+                <div class="entry-header">
+                    <span class="entry-date">April 13, 2026</span>
+                    <span class="entry-sprint">Sprint 3</span>
+                    <span class="entry-author">M. Abhinaya</span>
+                </div>
+                <div class="entry-body">
+                    <div class="entry-section">
+                        <span class="tag tag-build">Build</span>
+                        <h4>What was built today</h4>
+                        <ul>
+                            <li>Started <code>game.php</code> — PHP nested loop generating all 100 cells dynamically</li>
+                            <li>Implemented zigzag board numbering (snake-style: row 10 = 91–100 right-to-left, row 9 = 81–90 left-to-right, etc.)</li>
+                            <li>Built <code>css/board.css</code> — 10x10 CSS grid, cell styling, even/odd checkerboard pattern</li>
+                        </ul>
+                    </div>
+                    <div class="entry-section">
+                        <h4>Design Decision</h4>
+                        <p>The zigzag numbering formula uses <code>$rowFromBottom % 2 === 0</code> to determine direction. Took time to get this right — standard Snakes &amp; Ladders boards number from bottom-left to bottom-right then alternate. Verified against a physical board diagram.</p>
+                    </div>
+                    <div class="entry-section">
+                        <h4>Bugs / Issues</h4>
+                        <p>Initial board rendering had cell numbers in wrong order on odd rows. Fixed by reversing the column calculation: <code>$cellNum = $rowFromBottom * 10 + (10 - $col)</code> for odd rows.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="journal-entry">
+                <div class="entry-header">
+                    <span class="entry-date">April 14, 2026</span>
+                    <span class="entry-sprint">Sprint 3</span>
+                    <span class="entry-author">M. Abhinaya</span>
+                </div>
+                <div class="entry-body">
+                    <div class="entry-section">
+                        <span class="tag tag-build">Build</span>
+                        <span class="tag tag-design">Design</span>
+                        <h4>What was built today</h4>
+                        <ul>
+                            <li>Added player token overlay on correct cells using CSS absolute positioning</li>
+                            <li>Built <code>includes/board_config.php</code> — snake/ladder associative arrays for all 3 difficulty levels</li>
+                            <li>Added event cells and bonus tile arrays to board_config.php</li>
+                            <li>CSS snake cell (red border + 🐍 emoji), ladder cell (green + 🪜), bonus cell (gold + 🎁)</li>
+                        </ul>
+                    </div>
+                    <div class="entry-section">
+                        <h4>Design Decision</h4>
+                        <p>Used CSS ::after pseudo-elements to overlay emoji markers on snake/ladder/event cells rather than adding extra HTML elements inside each cell. This keeps the PHP loop output clean and the board markup minimal.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ==================== SPRINT 4 ==================== -->
+            <h2 class="section-title">Sprint 4 — April 13–16, 2026 | Dice Engine &amp; Logic</h2>
+
+            <div class="journal-entry">
+                <div class="entry-header">
+                    <span class="entry-date">April 15, 2026</span>
+                    <span class="entry-sprint">Sprint 4</span>
+                    <span class="entry-author">Dhanush Nagarajan</span>
+                </div>
+                <div class="entry-body">
+                    <div class="entry-section">
+                        <span class="tag tag-build">Build</span>
+                        <h4>What was built today</h4>
+                        <ul>
+                            <li>Built <code>process_roll.php</code> — POST handler for dice rolls, rand(1,6), processMove() function</li>
+                            <li>Snake/ladder lookup using associative arrays from board_config.php</li>
+                            <li>Bounce logic: if new position &gt; 100, player stays in place</li>
+                            <li>Session update: positions, dice history, move count, turn switch</li>
+                        </ul>
+                    </div>
+                    <div class="entry-section">
+                        <h4>Design Decision</h4>
+                        <p>All game logic is strictly server-side PHP — zero JavaScript. The dice roll is triggered by a POST form submission. This means every turn requires a page reload, which is intentional and matches the project requirement of no JS for game logic.</p>
+                    </div>
+                    <div class="entry-section">
+                        <h4>Bugs / Issues</h4>
+                        <p>Initial overshoot logic was setting position to 100 instead of keeping the player in place. Fixed based on proposal edge case: if roll would exceed 100, player stays at current position (bounce back).</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="journal-entry">
+                <div class="entry-header">
+                    <span class="entry-date">April 16, 2026</span>
+                    <span class="entry-sprint">Sprint 4</span>
+                    <span class="entry-author">Dhanush Nagarajan</span>
+                </div>
+                <div class="entry-body">
+                    <div class="entry-section">
+                        <span class="tag tag-build">Build</span>
+                        <h4>What was built today</h4>
+                        <ul>
+                            <li>Built <code>ai_turn.php</code> and <code>includes/ai_functions.php</code></li>
+                            <li>AI Easy strategy — pure random rand(1,6)</li>
+                            <li>AI Medium strategy — simulates all 6 rolls, picks best avoiding snakes (60% chance)</li>
+                            <li>AI Hard strategy — two-turn lookahead with average expected position (75% chance)</li>
+                            <li>AI Narrator engine — story-style messages using narrator_templates array</li>
+                            <li>Move Probability Map — shows each possible landing cell with percentage</li>
+                        </ul>
+                    </div>
+                    <div class="entry-section">
+                        <h4>Design Decision</h4>
+                        <p>AI strategies use a probability factor (60%/75%) so they don't always pick the optimal roll — this makes the game feel more natural and less mechanical. Seeded rand() with turn number for reproducible narrator messages during debugging.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ==================== SPRINT 5 ==================== -->
+            <h2 class="section-title">Sprint 5 — April 16–18, 2026 | Win Screen &amp; Leaderboard</h2>
+
+            <div class="journal-entry">
+                <div class="entry-header">
+                    <span class="entry-date">April 17, 2026</span>
+                    <span class="entry-sprint">Sprint 5</span>
+                    <span class="entry-author">Dhanush Nagarajan</span>
+                </div>
+                <div class="entry-body">
+                    <div class="entry-section">
+                        <span class="tag tag-build">Build</span>
+                        <h4>What was built today</h4>
+                        <ul>
+                            <li>Built <code>win.php</code> — win/lose screen depending on who won, final score display, time, moves</li>
+                            <li>Adventure Recap section — full events_log timeline with color-coded event types</li>
+                            <li>Path Analysis — human vs AI vs optimal move comparison with CSS bar chart (no JS)</li>
+                            <li>Score calculation: base 1000 − move penalty − time penalty × difficulty multiplier</li>
+                        </ul>
+                    </div>
+                    <div class="entry-section">
+                        <h4>Design Decision</h4>
+                        <p>The bar chart is built with pure CSS using inline style heights calculated server-side in PHP. No JavaScript is used — this satisfies the no-JS rule while still producing a visual comparison chart.</p>
+                    </div>
+                    <div class="entry-section">
+                        <h4>Bugs / Issues</h4>
+                        <p>Found that process_roll.php was redirecting to <code>recap.php</code> which did not exist. Fixed by renaming target to <code>win.php</code> in both process_roll.php and ai_turn.php.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="journal-entry">
+                <div class="entry-header">
+                    <span class="entry-date">April 18, 2026</span>
+                    <span class="entry-sprint">Sprint 5</span>
+                    <span class="entry-author">Dhanush Nagarajan</span>
+                </div>
+                <div class="entry-body">
+                    <div class="entry-section">
+                        <span class="tag tag-build">Build</span>
+                        <span class="tag tag-test">Test</span>
+                        <h4>What was built today</h4>
+                        <ul>
+                            <li>Built <code>leaderboard.php</code> — reads from both cookie and session scores, merges and sorts top 10</li>
+                            <li>Highlights the logged-in user's own rows in the leaderboard table</li>
+                            <li>Tested full game flow: login → dashboard → game → win → leaderboard</li>
+                            <li>Verified scores persist via cookie after logout and re-login</li>
+                        </ul>
+                    </div>
+                    <div class="entry-section">
+                        <h4>Design Decision</h4>
+                        <p>Scores are stored in both <code>$_SESSION['scores']</code> and a browser cookie (JSON encoded). The syncScoresToCookie() function merges both on every win to prevent duplicates. Cookie expires in 30 days so leaderboard data persists across visits.</p>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ==================== SPRINT 6 ==================== -->
+            <h2 class="section-title">Sprint 6 — April 17–19, 2026 | Testing &amp; Submission</h2>
+
+            <div class="journal-entry">
+                <div class="entry-header">
+                    <span class="entry-date">April 18, 2026</span>
+                    <span class="entry-sprint">Sprint 6</span>
+                    <span class="entry-author">Both</span>
+                </div>
+                <div class="entry-body">
+                    <div class="entry-section">
+                        <span class="tag tag-test">Test</span>
+                        <span class="tag tag-fix">Fix</span>
+                        <h4>What was tested today</h4>
+                        <ul>
+                            <li>Full game flow tested on CODD — no PHP errors on any page</li>
+                            <li>Tested direct URL access to protected pages — session guard redirects correctly</li>
+                            <li>Tested overshoot edge case — player stays in place when roll exceeds 100</li>
+                            <li>Tested bonus tile chain skip — opponent skip flag clears correctly on their next turn</li>
+                            <li>Responsive CSS verified on mobile (375px), tablet (768px), desktop (1200px)</li>
+                        </ul>
+                    </div>
+                    <div class="entry-section">
+                        <h4>Bugs Fixed</h4>
+                        <ul>
+                            <li>footer.php had leftover markdown text after the closing HTML tags — removed</li>
+                            <li>Verified no &lt;script&gt; tags exist anywhere in the project (would be −20 pts penalty)</li>
+                            <li>Verified no database code (PDO/MySQLi) exists anywhere</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <div class="journal-entry">
+                <div class="entry-header">
+                    <span class="entry-date">April 19, 2026</span>
+                    <span class="entry-sprint">Sprint 6</span>
+                    <span class="entry-author">Both</span>
+                </div>
+                <div class="entry-body">
+                    <div class="entry-section">
+                        <span class="tag tag-deploy">Deploy</span>
+                        <span class="tag tag-doc">Documentation</span>
+                        <h4>Final Day Tasks</h4>
+                        <ul>
+                            <li>All files uploaded to CODD server — live URL tested in incognito browser</li>
+                            <li>GitHub repository finalized — clean commit history, both members have commits</li>
+                            <li>team.html, Sprint_log.html, dev_journal.html completed</li>
+                            <li>Video recorded (15–20 min) and uploaded to Google Drive / YouTube</li>
+                            <li>i-College .txt submission file created with 3 links: CODD URL, GitHub URL, Video URL</li>
+                            <li>Both team members submitted individually to i-College Dropbox</li>
+                        </ul>
+                    </div>
+                    <div class="entry-section">
+                        <h4>Lessons Learned</h4>
+                        <ul>
+                            <li>Building purely server-side without JavaScript is more restrictive than expected — every interaction requires a POST form and page reload. Planning the session state carefully at the start saves a lot of refactoring later.</li>
+                            <li>The flat file approach for users.txt works well for small scale but would not scale to production — acknowledged in README as a course constraint.</li>
+                            <li>CSS-only animations require careful use of ::after pseudo-elements and keyframes — no logic possible, purely visual. Kept it to transitions and keyframe animations that add polish without functionality.</li>
+                            <li>CODD server file permissions for data/ folder need to be set correctly — this caught us during Sprint 2 and is worth noting for future deployments.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-container">
+            <p>&copy; 2026 Adventures of the Dice &mdash; CSC 4370/6370 Spring 2026</p>
+            <p>Georgia State University | Server-Side PHP Project</p>
+        </div>
+    </footer>
+
+</body>
+</html>

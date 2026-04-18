@@ -1,0 +1,401 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team — Adventures of the Dice</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/auth.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <style>
+        .team-page {
+            max-width: 860px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+
+        .team-hero {
+            text-align: center;
+            padding: 2.5rem 1.5rem;
+            background: linear-gradient(135deg, #1b4332, #2c6e49);
+            border-radius: 16px;
+            color: #fff;
+            margin-bottom: 2.5rem;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+        }
+
+        .team-hero .dice-icon {
+            font-size: 4rem;
+            margin-bottom: 0.75rem;
+        }
+
+        .team-hero h1 {
+            font-size: 2rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .team-hero p {
+            font-size: 1rem;
+            color: #b7e4c7;
+            max-width: 580px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+
+        .project-meta {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .meta-item {
+            background: #fff;
+            border-radius: 10px;
+            padding: 1.25rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            text-align: center;
+        }
+
+        .meta-item .meta-label {
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #6c757d;
+            margin-bottom: 0.4rem;
+        }
+
+        .meta-item .meta-value {
+            font-size: 0.95rem;
+            font-weight: 700;
+            color: #2c6e49;
+        }
+
+        .section-title {
+            font-size: 1.25rem;
+            font-weight: 700;
+            color: #1b4332;
+            margin-bottom: 1.25rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #c8e6c9;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 1.5rem;
+            margin-bottom: 2.5rem;
+        }
+
+        .member-card {
+            background: #fff;
+            border-radius: 14px;
+            padding: 2rem 1.5rem;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .member-card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
+        }
+
+        .member-card.leader {
+            border-top: 4px solid #2c6e49;
+        }
+
+        .member-card.member {
+            border-top: 4px solid #4c956c;
+        }
+
+        .member-avatar {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            margin: 0 auto 1rem;
+        }
+
+        .member-card.leader .member-avatar {
+            background: linear-gradient(135deg, #1b4332, #2c6e49);
+        }
+
+        .member-card.member .member-avatar {
+            background: linear-gradient(135deg, #2c6e49, #4c956c);
+        }
+
+        .member-name {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #1b1b1e;
+            margin-bottom: 0.25rem;
+        }
+
+        .member-scrum-role {
+            display: inline-block;
+            padding: 0.2rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            margin-bottom: 1rem;
+        }
+
+        .member-card.leader .member-scrum-role {
+            background: #e8f5e9;
+            color: #1b4332;
+        }
+
+        .member-card.member .member-scrum-role {
+            background: #f1f8e9;
+            color: #2c6e49;
+        }
+
+        .member-info {
+            font-size: 0.85rem;
+            color: #6c757d;
+            margin-bottom: 0.25rem;
+        }
+
+        .member-info a {
+            color: #2c6e49;
+            text-decoration: none;
+        }
+
+        .responsibilities {
+            margin-top: 1rem;
+            text-align: left;
+        }
+
+        .responsibilities h4 {
+            font-size: 0.8rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #6c757d;
+            margin-bottom: 0.5rem;
+        }
+
+        .responsibilities ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .responsibilities ul li {
+            font-size: 0.82rem;
+            color: #495057;
+            padding: 0.2rem 0;
+            padding-left: 1.2rem;
+            position: relative;
+        }
+
+        .responsibilities ul li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #2c6e49;
+            font-weight: 700;
+        }
+
+        .links-section {
+            background: #fff;
+            border-radius: 12px;
+            padding: 1.5rem;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+
+        .links-grid {
+            display: flex;
+            gap: 1rem;
+            flex-wrap: wrap;
+            margin-top: 1rem;
+        }
+
+        .project-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.65rem 1.25rem;
+            border-radius: 8px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            font-weight: 600;
+            transition: transform 0.2s ease;
+        }
+
+        .project-link:hover {
+            transform: translateY(-2px);
+        }
+
+        .link-github {
+            background: #1b1b1e;
+            color: #fff;
+        }
+
+        .link-codd {
+            background: #2c6e49;
+            color: #fff;
+        }
+
+        .link-game {
+            background: #4c956c;
+            color: #fff;
+        }
+
+        @media (max-width: 600px) {
+            .team-hero h1 { font-size: 1.5rem; }
+            .member-card { padding: 1.5rem 1rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="header-container">
+            <a href="index.php" class="logo">
+                <span class="logo-icon">🎲</span>
+                <span class="logo-text">Adventures of the Dice</span>
+            </a>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="login.php">Login</a></li>
+                    <li><a href="register.php">Register</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="team-page">
+
+            <!-- Hero -->
+            <div class="team-hero">
+                <div class="dice-icon">🎲</div>
+                <h1>Adventures of the Dice</h1>
+                <p>
+                    A fully server-driven PHP implementation of Snakes &amp; Ladders.
+                    2-player board game with 3 difficulty levels, AI opponent, and dynamic game events.
+                    Built with pure PHP, HTML5, and CSS3 — no JavaScript, no database.
+                </p>
+            </div>
+
+            <!-- Project Meta -->
+            <div class="project-meta">
+                <div class="meta-item">
+                    <div class="meta-label">Course</div>
+                    <div class="meta-value">CSC 4370/6370</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-label">Semester</div>
+                    <div class="meta-value">Spring 2026</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-label">Institution</div>
+                    <div class="meta-value">Georgia State University</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-label">Topic</div>
+                    <div class="meta-value">Topic 03 — Adventures of the Dice</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-label">Due Date</div>
+                    <div class="meta-value">April 19, 2026</div>
+                </div>
+                <div class="meta-item">
+                    <div class="meta-label">Tech Stack</div>
+                    <div class="meta-value">PHP · HTML5 · CSS3</div>
+                </div>
+            </div>
+
+            <!-- Team Members -->
+            <h2 class="section-title">👥 Meet the Team</h2>
+            <div class="team-grid">
+
+                <!-- Dhanush — Leader -->
+                <div class="member-card leader">
+                    <div class="member-avatar">👨‍💻</div>
+                    <div class="member-name">Dhanush Nagarajan</div>
+                    <span class="member-scrum-role">Scrum Master &amp; Project Leader</span>
+                    <div class="member-info">Student ID: 002932859</div>
+                    <div class="member-info">
+                        <a href="mailto:dnagarajan1@student.gsu.edu">dnagarajan1@student.gsu.edu</a>
+                    </div>
+                    <div class="responsibilities">
+                        <h4>Responsibilities</h4>
+                        <ul>
+                            <li>GitHub Owner &amp; Primary Submitter</li>
+                            <li>Registration &amp; Login PHP</li>
+                            <li>Validation &amp; Sanitization</li>
+                            <li>Flat-file User Storage</li>
+                            <li>Session &amp; Cookie Management</li>
+                            <li>Leaderboard</li>
+                            <li>Auth Guard (require_auth)</li>
+                            <li>Logout</li>
+                            <li>CODD Deploy Coordination</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Abhinaya — Member -->
+                <div class="member-card member">
+                    <div class="member-avatar">👩‍💻</div>
+                    <div class="member-name">M. Abhinaya</div>
+                    <span class="member-scrum-role">Project Owner</span>
+                    <div class="member-info">Student ID: 002983679</div>
+                    <div class="member-info">
+                        <a href="mailto:gmandela1@student.gsu.edu">gmandela1@student.gsu.edu</a>
+                    </div>
+                    <div class="responsibilities">
+                        <h4>Responsibilities</h4>
+                        <ul>
+                            <li>Product Backlog (Game Features)</li>
+                            <li>Dice &amp; Board PHP Logic</li>
+                            <li>Snakes &amp; Ladders Maps</li>
+                            <li>Difficulty Configurations</li>
+                            <li>2-Player Turn Logic</li>
+                            <li>Win Condition</li>
+                            <li>Event Cells &amp; Narrator</li>
+                            <li>Events Log</li>
+                            <li>Responsive Board CSS</li>
+                        </ul>
+                    </div>
+                </div>
+
+            </div>
+
+            <!-- Project Links -->
+            <div class="links-section">
+                <h2 class="section-title">🔗 Project Links</h2>
+                <div class="links-grid">
+                    <a href="https://github.com/Dhanush-0017/Dhanush_Adventures_0f_the_Dice"
+                       class="project-link link-github" target="_blank">
+                        &#128029; GitHub Repository
+                    </a>
+                    <a href="https://codd.cs.gsu.edu/~dnagarajan1/WP/PW/Dhanush_Adventures_0f_the_Dice/"
+                       class="project-link link-codd" target="_blank">
+                        🌐 Live on CODD Server
+                    </a>
+                    <a href="login.php" class="project-link link-game">
+                        🎲 Play the Game
+                    </a>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-container">
+            <p>&copy; 2026 Adventures of the Dice &mdash; CSC 4370/6370 Spring 2026</p>
+            <p>Georgia State University | Server-Side PHP Project</p>
+        </div>
+    </footer>
+
+</body>
+</html>

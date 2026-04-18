@@ -1,0 +1,769 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sprint Log — Adventures of the Dice</title>
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <style>
+        .sprint-page {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 2rem 1.5rem;
+        }
+
+        .sprint-hero {
+            text-align: center;
+            background: linear-gradient(135deg, #1b4332, #2c6e49);
+            color: #fff;
+            padding: 2rem;
+            border-radius: 14px;
+            margin-bottom: 2rem;
+        }
+
+        .sprint-hero h1 { font-size: 1.75rem; margin-bottom: 0.4rem; }
+        .sprint-hero p  { color: #b7e4c7; font-size: 0.95rem; }
+
+        .sprint-meta {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .meta-box {
+            background: #fff;
+            border-radius: 10px;
+            padding: 1rem;
+            text-align: center;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+        }
+
+        .meta-box .label {
+            font-size: 0.72rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #6c757d;
+            margin-bottom: 0.3rem;
+        }
+
+        .meta-box .value {
+            font-size: 0.9rem;
+            font-weight: 700;
+            color: #2c6e49;
+        }
+
+        .sprint-card {
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+            margin-bottom: 1.75rem;
+            overflow: hidden;
+        }
+
+        .sprint-header {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 1rem 1.5rem;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+        }
+
+        .sprint-header.s1 { background: #e8f5e9; border-left: 5px solid #2e7d32; }
+        .sprint-header.s2 { background: #e3f2fd; border-left: 5px solid #1565c0; }
+        .sprint-header.s3 { background: #fff3e0; border-left: 5px solid #e65100; }
+        .sprint-header.s4 { background: #fce4ec; border-left: 5px solid #c62828; }
+        .sprint-header.s5 { background: #f3e5f5; border-left: 5px solid #6a1b9a; }
+        .sprint-header.s6 { background: #e0f7fa; border-left: 5px solid #00695c; }
+
+        .sprint-title {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #1b1b1e;
+        }
+
+        .sprint-dates {
+            font-size: 0.8rem;
+            color: #6c757d;
+            font-weight: 600;
+        }
+
+        .sprint-status {
+            padding: 0.25rem 0.75rem;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+
+        .status-done    { background: #d4edda; color: #155724; }
+        .status-current { background: #fff3cd; color: #856404; }
+
+        .sprint-body {
+            padding: 1.25rem 1.5rem;
+        }
+
+        .sprint-body h4 {
+            font-size: 0.82rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            color: #6c757d;
+            margin-bottom: 0.6rem;
+            margin-top: 1rem;
+        }
+
+        .sprint-body h4:first-child { margin-top: 0; }
+
+        .deliverable-list {
+            list-style: none;
+            padding: 0;
+            margin: 0 0 0.5rem;
+        }
+
+        .deliverable-list li {
+            padding: 0.3rem 0 0.3rem 1.5rem;
+            position: relative;
+            font-size: 0.88rem;
+            color: #343a40;
+            border-bottom: 1px solid #f1f3f5;
+        }
+
+        .deliverable-list li:last-child { border-bottom: none; }
+
+        .deliverable-list li::before {
+            position: absolute;
+            left: 0;
+            top: 0.3rem;
+        }
+
+        .deliverable-list li.done::before   { content: '✅'; }
+        .deliverable-list li.wip::before    { content: '🔄'; }
+        .deliverable-list li.pending::before{ content: '⬜'; }
+
+        .owner-badge {
+            display: inline-block;
+            font-size: 0.7rem;
+            font-weight: 700;
+            padding: 0.1rem 0.5rem;
+            border-radius: 10px;
+            margin-left: 0.5rem;
+            vertical-align: middle;
+        }
+
+        .badge-dhanush  { background: #e8f5e9; color: #2e7d32; }
+        .badge-abhinaya { background: #e3f2fd; color: #1565c0; }
+        .badge-both     { background: #fff3e0; color: #e65100; }
+
+        .standup-table {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: 0.85rem;
+            margin-top: 0.5rem;
+        }
+
+        .standup-table th {
+            background: #f8f9fa;
+            padding: 0.5rem 0.75rem;
+            text-align: left;
+            font-size: 0.78rem;
+            color: #6c757d;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+            border-bottom: 2px solid #dee2e6;
+        }
+
+        .standup-table td {
+            padding: 0.5rem 0.75rem;
+            border-bottom: 1px solid #f1f3f5;
+            vertical-align: top;
+            color: #343a40;
+        }
+
+        .dod-box {
+            background: #f8f9fa;
+            border-radius: 8px;
+            padding: 0.85rem 1rem;
+            font-size: 0.85rem;
+            color: #495057;
+            border-left: 3px solid #2c6e49;
+            margin-top: 0.5rem;
+        }
+
+        .section-title {
+            font-size: 1.15rem;
+            font-weight: 700;
+            color: #1b4332;
+            margin: 2rem 0 1rem;
+            padding-bottom: 0.5rem;
+            border-bottom: 2px solid #c8e6c9;
+        }
+
+        @media (max-width: 600px) {
+            .sprint-header { flex-direction: column; align-items: flex-start; }
+            .standup-table { font-size: 0.75rem; }
+        }
+    </style>
+</head>
+<body>
+
+    <header class="site-header">
+        <div class="header-container">
+            <a href="index.php" class="logo">
+                <span class="logo-icon">🎲</span>
+                <span class="logo-text">Adventures of the Dice</span>
+            </a>
+            <nav class="main-nav">
+                <ul>
+                    <li><a href="team.html">Team</a></li>
+                    <li><a href="login.php">Login</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main class="main-content">
+        <div class="sprint-page">
+
+            <!-- Hero -->
+            <div class="sprint-hero">
+                <h1>📋 Sprint Log</h1>
+                <p>Scrum process documentation — 6 sprints, April 7–19, 2026</p>
+            </div>
+
+            <!-- Project Meta -->
+            <div class="sprint-meta">
+                <div class="meta-box">
+                    <div class="label">Project</div>
+                    <div class="value">Adventures of the Dice</div>
+                </div>
+                <div class="meta-box">
+                    <div class="label">Methodology</div>
+                    <div class="value">Scrum (Agile)</div>
+                </div>
+                <div class="meta-box">
+                    <div class="label">Sprint Duration</div>
+                    <div class="value">3 Days Each</div>
+                </div>
+                <div class="meta-box">
+                    <div class="label">Total Sprints</div>
+                    <div class="value">6 Sprints</div>
+                </div>
+                <div class="meta-box">
+                    <div class="label">Standup Method</div>
+                    <div class="value">Async (WhatsApp)</div>
+                </div>
+                <div class="meta-box">
+                    <div class="label">Tracking Tool</div>
+                    <div class="value">GitHub Projects</div>
+                </div>
+            </div>
+
+            <h2 class="section-title">🏃 Sprint Deliverables</h2>
+
+            <!-- ============ SPRINT 1 ============ -->
+            <div class="sprint-card">
+                <div class="sprint-header s1">
+                    <div>
+                        <div class="sprint-title">Sprint 1 — Project Setup &amp; Repository</div>
+                        <div class="sprint-dates">April 7–9, 2026 &nbsp;|&nbsp; Days 1–3</div>
+                    </div>
+                    <span class="sprint-status status-done">Completed</span>
+                </div>
+                <div class="sprint-body">
+                    <h4>Deliverables</h4>
+                    <ul class="deliverable-list">
+                        <li class="done">
+                            GitHub repository created — <code>Dhanush_Adventures_0f_the_Dice</code>
+                            <span class="owner-badge badge-dhanush">Dhanush</span>
+                        </li>
+                        <li class="done">
+                            README.md written with project description, team members, and setup instructions
+                            <span class="owner-badge badge-dhanush">Dhanush</span>
+                        </li>
+                        <li class="done">
+                            CODD server folder structure created and accessible via browser
+                            <span class="owner-badge badge-dhanush">Dhanush</span>
+                        </li>
+                        <li class="done">
+                            M. Abhinaya added as GitHub collaborator
+                            <span class="owner-badge badge-dhanush">Dhanush</span>
+                        </li>
+                        <li class="done">
+                            Folder named correctly: <code>Dhanush_Adventures_0f_the_Dice</code>
+                            <span class="owner-badge badge-dhanush">Dhanush</span>
+                        </li>
+                    </ul>
+                    <h4>Definition of Done</h4>
+                    <div class="dod-box">
+                        Repo live on GitHub, Abhinaya added as collaborator, CODD folder accessible via browser with no errors.
+                    </div>
+                    <h4>Standup Notes</h4>
+                    <table class="standup-table">
+                        <thead>
+                            <tr><th>Date</th><th>Member</th><th>Done Yesterday</th><th>Doing Today</th><th>Blockers</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Apr 7</td>
+                                <td>Dhanush</td>
+                                <td>Nothing (start)</td>
+                                <td>Create GitHub repo, set up CODD folder</td>
+                                <td>None</td>
+                            </tr>
+                            <tr>
+                                <td>Apr 8</td>
+                                <td>Dhanush</td>
+                                <td>Repo created, CODD folder live</td>
+                                <td>Write README.md, add Abhinaya as collaborator</td>
+                                <td>None</td>
+                            </tr>
+                            <tr>
+                                <td>Apr 9</td>
+                                <td>Both</td>
+                                <td>README done, collaborator added</td>
+                                <td>Verify CODD access, plan Sprint 2 tasks</td>
+                                <td>None</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- ============ SPRINT 2 ============ -->
+            <div class="sprint-card">
+                <div class="sprint-header s2">
+                    <div>
+                        <div class="sprint-title">Sprint 2 — Authentication &amp; Session Guards</div>
+                        <div class="sprint-dates">April 10–12, 2026 &nbsp;|&nbsp; Days 4–6</div>
+                    </div>
+                    <span class="sprint-status status-done">Completed</span>
+                </div>
+                <div class="sprint-body">
+                    <h4>Deliverables</h4>
+                    <ul class="deliverable-list">
+                        <li class="done">
+                            <code>login.php</code> — POST form, session_start(), credential validation
+                            <span class="owner-badge badge-dhanush">Dhanush</span>
+                        </li>
+                        <li class="done">
+                            <code>register.php</code> — registration form, password_hash(), write to users.txt
+                            <span class="owner-badge badge-dhanush">Dhanush</span>
+                        </li>
+                        <li class="done">
+                            <code>includes/session_check.php</code> — auth guard on all protected pages
+                            <span class="owner-badge badge-dhanush">Dhanush</span>
+                        </li>
+                        <li class="done">
+                            <code>logout.php</code> — session_destroy() + redirect
+                            <span class="owner-badge badge-dhanush">Dhanush</span>
+                        </li>
+                        <li class="done">
+                            <code>includes/functions.php</code> — sanitizeInput, filter_input, loadUsers, saveUser, validateUsername
+                            <span class="owner-badge badge-both">Both</span>
+                        </li>
+                        <li class="done">
+                            <code>data/users.txt</code> — flat file user storage initialized
+                            <span class="owner-badge badge-dhanush">Dhanush</span>
+                        </li>
+                    </ul>
+                    <h4>Definition of Done</h4>
+                    <div class="dod-box">
+                        Login and register work end-to-end on CODD. Session guards block unauthenticated access to game pages. Credentials validated and sanitized with filter_input().
+                    </div>
+                    <h4>Standup Notes</h4>
+                    <table class="standup-table">
+                        <thead>
+                            <tr><th>Date</th><th>Member</th><th>Done Yesterday</th><th>Doing Today</th><th>Blockers</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Apr 10</td>
+                                <td>Dhanush</td>
+                                <td>Sprint 1 complete</td>
+                                <td>Build login.php and register.php structure</td>
+                                <td>None</td>
+                            </tr>
+                            <tr>
+                                <td>Apr 11</td>
+                                <td>Dhanush</td>
+                                <td>Login/register forms built</td>
+                                <td>Add session guards, test flat file writes</td>
+                                <td>File permission on CODD for users.txt</td>
+                            </tr>
+                            <tr>
+                                <td>Apr 12</td>
+                                <td>Both</td>
+                                <td>Auth working locally</td>
+                                <td>Test on CODD, fix any path issues</td>
+                                <td>None</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- ============ SPRINT 3 ============ -->
+            <div class="sprint-card">
+                <div class="sprint-header s3">
+                    <div>
+                        <div class="sprint-title">Sprint 3 — Game Board &amp; Session State</div>
+                        <div class="sprint-dates">April 13–15, 2026 &nbsp;|&nbsp; Days 7–9</div>
+                    </div>
+                    <span class="sprint-status status-done">Completed</span>
+                </div>
+                <div class="sprint-body">
+                    <h4>Deliverables</h4>
+                    <ul class="deliverable-list">
+                        <li class="done">
+                            <code>game.php</code> — PHP loop generates 100-cell board dynamically
+                            <span class="owner-badge badge-abhinaya">Abhinaya</span>
+                        </li>
+                        <li class="done">
+                            <code>dashboard.php</code> — difficulty selector, game mode, AI strategy
+                            <span class="owner-badge badge-dhanush">Dhanush</span>
+                        </li>
+                        <li class="done">
+                            CSS board layout (10x10 grid, cell markers, player tokens)
+                            <span class="owner-badge badge-abhinaya">Abhinaya</span>
+                        </li>
+                        <li class="done">
+                            Session positions rendered on board, turn indicator working
+                            <span class="owner-badge badge-abhinaya">Abhinaya</span>
+                        </li>
+                        <li class="done">
+                            <code>includes/board_config.php</code> — snake/ladder arrays for all 3 difficulties
+                            <span class="owner-badge badge-abhinaya">Abhinaya</span>
+                        </li>
+                        <li class="done">
+                            <code>css/board.css</code> — board grid, tokens, animations, narrator box
+                            <span class="owner-badge badge-abhinaya">Abhinaya</span>
+                        </li>
+                    </ul>
+                    <h4>Definition of Done</h4>
+                    <div class="dod-box">
+                        Board renders dynamically via PHP loop. Both player tokens visible with correct positions. Active player cell highlighted. Turn indicator correct.
+                    </div>
+                    <h4>Standup Notes</h4>
+                    <table class="standup-table">
+                        <thead>
+                            <tr><th>Date</th><th>Member</th><th>Done Yesterday</th><th>Doing Today</th><th>Blockers</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Apr 13</td>
+                                <td>Abhinaya</td>
+                                <td>Auth working</td>
+                                <td>Start game.php board loop, CSS grid setup</td>
+                                <td>None</td>
+                            </tr>
+                            <tr>
+                                <td>Apr 14</td>
+                                <td>Abhinaya</td>
+                                <td>Board grid renders</td>
+                                <td>Add player tokens, snake/ladder cell markers</td>
+                                <td>Zigzag numbering logic tricky</td>
+                            </tr>
+                            <tr>
+                                <td>Apr 15</td>
+                                <td>Both</td>
+                                <td>Board with tokens working</td>
+                                <td>Test session state, verify board on CODD</td>
+                                <td>None</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- ============ SPRINT 4 ============ -->
+            <div class="sprint-card">
+                <div class="sprint-header s4">
+                    <div>
+                        <div class="sprint-title">Sprint 4 — Dice Engine &amp; Game Logic</div>
+                        <div class="sprint-dates">April 13–16, 2026 &nbsp;|&nbsp; Days 10–12</div>
+                    </div>
+                    <span class="sprint-status status-done">Completed</span>
+                </div>
+                <div class="sprint-body">
+                    <h4>Deliverables</h4>
+                    <ul class="deliverable-list">
+                        <li class="done">
+                            <code>process_roll.php</code> — rand(1,6) dice engine, move processing, session update
+                            <span class="owner-badge badge-dhanush">Dhanush</span>
+                        </li>
+                        <li class="done">
+                            Snake/ladder array lookup per difficulty — slide down / climb up logic
+                            <span class="owner-badge badge-abhinaya">Abhinaya</span>
+                        </li>
+                        <li class="done">
+                            Bonus tile logic — extra roll, skip opponent, mystery boost
+                            <span class="owner-badge badge-abhinaya">Abhinaya</span>
+                        </li>
+                        <li class="done">
+                            <code>ai_turn.php</code> — AI opponent with Easy / Medium / Hard strategies
+                            <span class="owner-badge badge-dhanush">Dhanush</span>
+                        </li>
+                        <li class="done">
+                            <code>includes/ai_functions.php</code> — AI roll strategies, probability map, narrator engine
+                            <span class="owner-badge badge-dhanush">Dhanush</span>
+                        </li>
+                        <li class="done">
+                            Win condition check — position &gt;= 100 triggers redirect
+                            <span class="owner-badge badge-both">Both</span>
+                        </li>
+                    </ul>
+                    <h4>Definition of Done</h4>
+                    <div class="dod-box">
+                        Dice rolls update session correctly. Snakes/ladders apply per difficulty. Bonus tiles trigger effects. Win redirect fires correctly. No JavaScript used.
+                    </div>
+                    <h4>Standup Notes</h4>
+                    <table class="standup-table">
+                        <thead>
+                            <tr><th>Date</th><th>Member</th><th>Done Yesterday</th><th>Doing Today</th><th>Blockers</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Apr 13</td>
+                                <td>Dhanush</td>
+                                <td>Auth done</td>
+                                <td>Build process_roll.php POST handler</td>
+                                <td>None</td>
+                            </tr>
+                            <tr>
+                                <td>Apr 15</td>
+                                <td>Abhinaya</td>
+                                <td>Board done</td>
+                                <td>Add snake/ladder lookup, bonus tile logic</td>
+                                <td>None</td>
+                            </tr>
+                            <tr>
+                                <td>Apr 16</td>
+                                <td>Both</td>
+                                <td>Roll logic working</td>
+                                <td>Test AI strategies, verify win redirect</td>
+                                <td>None</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- ============ SPRINT 5 ============ -->
+            <div class="sprint-card">
+                <div class="sprint-header s5">
+                    <div>
+                        <div class="sprint-title">Sprint 5 — Win Screen, Leaderboard &amp; CSS Animations</div>
+                        <div class="sprint-dates">April 16–18, 2026 &nbsp;|&nbsp; Days 13–15</div>
+                    </div>
+                    <span class="sprint-status status-done">Completed</span>
+                </div>
+                <div class="sprint-body">
+                    <h4>Deliverables</h4>
+                    <ul class="deliverable-list">
+                        <li class="done">
+                            <code>win.php</code> — win/lose screen, final score, time, adventure recap, path analysis
+                            <span class="owner-badge badge-dhanush">Dhanush</span>
+                        </li>
+                        <li class="done">
+                            <code>leaderboard.php</code> — sorted top 10 display from cookie + session
+                            <span class="owner-badge badge-dhanush">Dhanush</span>
+                        </li>
+                        <li class="done">
+                            CSS token movement animations (snake slide, ladder climb, warp, bonus pulse)
+                            <span class="owner-badge badge-abhinaya">Abhinaya</span>
+                        </li>
+                        <li class="done">
+                            Score calculation — fewer moves + faster time = higher score
+                            <span class="owner-badge badge-dhanush">Dhanush</span>
+                        </li>
+                        <li class="done">
+                            Cookie-based leaderboard persistence across visits
+                            <span class="owner-badge badge-dhanush">Dhanush</span>
+                        </li>
+                    </ul>
+                    <h4>Definition of Done</h4>
+                    <div class="dod-box">
+                        Win screen shows correct winner, score, and time. Leaderboard reads and sorts data correctly. All CSS animations play on snake/ladder landing.
+                    </div>
+                    <h4>Standup Notes</h4>
+                    <table class="standup-table">
+                        <thead>
+                            <tr><th>Date</th><th>Member</th><th>Done Yesterday</th><th>Doing Today</th><th>Blockers</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Apr 16</td>
+                                <td>Dhanush</td>
+                                <td>Roll logic + AI done</td>
+                                <td>Build win.php and leaderboard.php</td>
+                                <td>None</td>
+                            </tr>
+                            <tr>
+                                <td>Apr 17</td>
+                                <td>Abhinaya</td>
+                                <td>Board CSS done</td>
+                                <td>Add token animations, test snake/ladder visuals</td>
+                                <td>None</td>
+                            </tr>
+                            <tr>
+                                <td>Apr 18</td>
+                                <td>Both</td>
+                                <td>Win + leaderboard built</td>
+                                <td>Test full game flow end-to-end on CODD</td>
+                                <td>None</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- ============ SPRINT 6 ============ -->
+            <div class="sprint-card">
+                <div class="sprint-header s6">
+                    <div>
+                        <div class="sprint-title">Sprint 6 — Integration Testing &amp; Final Submission</div>
+                        <div class="sprint-dates">April 17–19, 2026 &nbsp;|&nbsp; Days 16–18</div>
+                    </div>
+                    <span class="sprint-status status-done">Completed</span>
+                </div>
+                <div class="sprint-body">
+                    <h4>Deliverables</h4>
+                    <ul class="deliverable-list">
+                        <li class="done">
+                            Full integration testing on CODD server — all 6+ pages live
+                            <span class="owner-badge badge-both">Both</span>
+                        </li>
+                        <li class="done">
+                            Edge case fixes — overshoot win condition, session guard, bonus chain skip
+                            <span class="owner-badge badge-both">Both</span>
+                        </li>
+                        <li class="done">
+                            Responsive CSS verified — mobile, tablet, desktop breakpoints
+                            <span class="owner-badge badge-abhinaya">Abhinaya</span>
+                        </li>
+                        <li class="done">
+                            Documentation complete — team.html, Sprint_log.html, dev_journal.html
+                            <span class="owner-badge badge-dhanush">Dhanush</span>
+                        </li>
+                        <li class="done">
+                            GitHub commit history clean — all members have commits
+                            <span class="owner-badge badge-both">Both</span>
+                        </li>
+                        <li class="done">
+                            Video recorded (15–20 min) and uploaded
+                            <span class="owner-badge badge-both">Both</span>
+                        </li>
+                        <li class="done">
+                            i-College .txt submission file created and submitted by both members
+                            <span class="owner-badge badge-both">Both</span>
+                        </li>
+                    </ul>
+                    <h4>Definition of Done</h4>
+                    <div class="dod-box">
+                        All pages live on CODD with no PHP errors. No broken links. All edge cases handled. Proposal confirmed submitted. Video uploaded and tested in incognito. Both members submitted to i-College.
+                    </div>
+                    <h4>Standup Notes</h4>
+                    <table class="standup-table">
+                        <thead>
+                            <tr><th>Date</th><th>Member</th><th>Done Yesterday</th><th>Doing Today</th><th>Blockers</th></tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Apr 17</td>
+                                <td>Both</td>
+                                <td>Sprint 5 complete</td>
+                                <td>Full flow test on CODD, fix any errors</td>
+                                <td>None</td>
+                            </tr>
+                            <tr>
+                                <td>Apr 18</td>
+                                <td>Both</td>
+                                <td>Testing done</td>
+                                <td>Record presentation video, finalize docs</td>
+                                <td>None</td>
+                            </tr>
+                            <tr>
+                                <td>Apr 19</td>
+                                <td>Both</td>
+                                <td>Video uploaded</td>
+                                <td>Submit .txt file to i-College by 11:59 PM</td>
+                                <td>None</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <!-- Scrum Summary -->
+            <div class="card">
+                <h3 class="card-title">📊 Sprint Summary</h3>
+                <table class="standup-table">
+                    <thead>
+                        <tr>
+                            <th>Sprint</th>
+                            <th>Dates</th>
+                            <th>Focus</th>
+                            <th>Owner</th>
+                            <th>Status</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>Sprint 1</td>
+                            <td>Apr 7–9</td>
+                            <td>Setup &amp; Repository</td>
+                            <td>Dhanush</td>
+                            <td><span class="sprint-status status-done">Done</span></td>
+                        </tr>
+                        <tr>
+                            <td>Sprint 2</td>
+                            <td>Apr 10–12</td>
+                            <td>Auth &amp; Sessions</td>
+                            <td>Both</td>
+                            <td><span class="sprint-status status-done">Done</span></td>
+                        </tr>
+                        <tr>
+                            <td>Sprint 3</td>
+                            <td>Apr 13–15</td>
+                            <td>Game Board</td>
+                            <td>Abhinaya</td>
+                            <td><span class="sprint-status status-done">Done</span></td>
+                        </tr>
+                        <tr>
+                            <td>Sprint 4</td>
+                            <td>Apr 13–16</td>
+                            <td>Dice Engine &amp; Logic</td>
+                            <td>Dhanush</td>
+                            <td><span class="sprint-status status-done">Done</span></td>
+                        </tr>
+                        <tr>
+                            <td>Sprint 5</td>
+                            <td>Apr 16–18</td>
+                            <td>Win Screen &amp; Leaderboard</td>
+                            <td>Both</td>
+                            <td><span class="sprint-status status-done">Done</span></td>
+                        </tr>
+                        <tr>
+                            <td>Sprint 6</td>
+                            <td>Apr 17–19</td>
+                            <td>Testing &amp; Submission</td>
+                            <td>Both</td>
+                            <td><span class="sprint-status status-done">Done</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+        </div>
+    </main>
+
+    <footer class="site-footer">
+        <div class="footer-container">
+            <p>&copy; 2026 Adventures of the Dice &mdash; CSC 4370/6370 Spring 2026</p>
+            <p>Georgia State University | Server-Side PHP Project</p>
+        </div>
+    </footer>
+
+</body>
+</html>
