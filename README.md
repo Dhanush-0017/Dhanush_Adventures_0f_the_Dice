@@ -170,7 +170,7 @@ Dhanush_Adventures_0f_the_Dice/
 | AI Tool | What It Was Used For | What Was Written Independently |
 |---------|---------------------|-------------------------------|
 | Claude (Anthropic) | Assisted with structuring PHP logic for the AI narrator engine and move probability map | All core game logic (dice roll, snake/ladder lookup, session management, form handling) was written independently by team members |
-| Claude (Anthropic) | Assisted with generating documentation files (Sprint_log.html, dev_journal.html, README.md, team.html) | All PHP, game flow, and CSS were designed and implemented by team members |
+| Claude (Anthropic) | Assisted with generating documentation files (Sprint_log, dev_journal and team) | All PHP, game flow, and CSS were designed and implemented by team members |
 
 **All PHP code, game logic, session management, CSS, and HTML structure were implemented by Dhanush Nagarajan and M. Abhinaya.** AI tools were used for documentation assistance and code structure suggestions — not for copying complete functional code solutions.
 
