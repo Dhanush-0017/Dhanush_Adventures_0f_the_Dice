@@ -1,0 +1,431 @@
+/* ============================================================
+   Adventures of the Dice — Responsive Breakpoints
+   Mobile-first responsive design
+   CSC 4370/6370 Spring 2026
+   ============================================================ */
+
+/* ---- Tablet: 768px and below ---- */
+@media screen and (max-width: 768px) {
+
+    /* Header */
+    .header-container {
+        flex-direction: column;
+        text-align: center;
+        gap: 0.75rem;
+    }
+
+    .main-nav ul {
+        justify-content: center;
+        gap: 0.35rem;
+    }
+
+    .main-nav a {
+        padding: 0.4rem 0.75rem;
+        font-size: 0.85rem;
+    }
+
+    /* Main Content */
+    .main-content {
+        padding: 0 1rem;
+        margin: 1rem auto;
+    }
+
+    /* Game Board */
+    .game-board {
+        width: 450px;
+        height: 450px;
+    }
+
+    .board-cell {
+        font-size: 0.6rem;
+    }
+
+    .cell-number {
+        font-size: 0.5rem;
+    }
+
+    .board-cell.snake-head::after,
+    .board-cell.ladder-base::after,
+    .board-cell.event-bonus::after,
+    .board-cell.event-penalty::after,
+    .board-cell.event-skip::after,
+    .board-cell.event-warp::after,
+    .board-cell.bonus-tile::after {
+        font-size: 0.75rem;
+    }
+
+    .player-token {
+        width: 18px;
+        height: 18px;
+    }
+
+    /* Game Layout */
+    .game-layout {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .game-sidebar {
+        max-width: 450px;
+        width: 100%;
+    }
+
+    /* Game Info Panel */
+    .game-info-panel {
+        max-width: 450px;
+    }
+
+    .player-card {
+        min-width: 140px;
+    }
+
+    /* Dice */
+    .dice-display {
+        width: 65px;
+        height: 65px;
+        font-size: 2rem;
+    }
+
+    /* Dashboard Setup Grid */
+    .setup-grid {
+        grid-template-columns: 1fr;
+    }
+
+    /* Auth Card */
+    .auth-card {
+        padding: 2rem 1.5rem;
+    }
+
+    /* Win Screen Stats */
+    .win-screen .stats-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.5rem;
+    }
+
+    .win-screen .stat-value {
+        font-size: 1.2rem;
+    }
+
+    /* Path Analysis */
+    .path-comparison {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 0.5rem;
+    }
+
+    .path-column .path-moves {
+        font-size: 1.5rem;
+    }
+
+    /* Bar Chart */
+    .bar-chart {
+        height: 150px;
+    }
+
+    /* Board Legend */
+    .board-legend {
+        gap: 0.5rem;
+    }
+
+    .legend-item {
+        font-size: 0.7rem;
+    }
+
+    /* Leaderboard */
+    .leaderboard-table th,
+    .leaderboard-table td {
+        padding: 0.6rem 0.5rem;
+        font-size: 0.8rem;
+    }
+}
+
+/* ---- Mobile: 480px and below ---- */
+@media screen and (max-width: 480px) {
+
+    /* Header */
+    .logo {
+        font-size: 1rem;
+    }
+
+    .logo-icon {
+        font-size: 1.35rem;
+    }
+
+    .main-nav ul {
+        flex-wrap: wrap;
+        gap: 0.25rem;
+    }
+
+    .main-nav a {
+        padding: 0.3rem 0.5rem;
+        font-size: 0.75rem;
+    }
+
+    .user-info {
+        font-size: 0.75rem;
+        padding: 0.35rem 0.5rem;
+    }
+
+    /* Main Content */
+    .main-content {
+        padding: 0 0.5rem;
+        margin: 0.75rem auto;
+    }
+
+    /* Game Board — fits small screens */
+    .game-board {
+        width: 320px;
+        height: 320px;
+    }
+
+    .board-cell {
+        font-size: 0.5rem;
+    }
+
+    .cell-number {
+        font-size: 0.4rem;
+    }
+
+    .board-cell.snake-head::after,
+    .board-cell.ladder-base::after,
+    .board-cell.event-bonus::after,
+    .board-cell.event-penalty::after,
+    .board-cell.event-skip::after,
+    .board-cell.event-warp::after,
+    .board-cell.bonus-tile::after {
+        font-size: 0.55rem;
+    }
+
+    .player-token {
+        width: 14px;
+        height: 14px;
+        border-width: 1px;
+    }
+
+    .token-player1 {
+        top: 2px;
+        left: 2px;
+    }
+
+    .token-player2 {
+        bottom: 2px;
+        right: 2px;
+    }
+
+    /* Board Wrapper */
+    .board-wrapper {
+        padding: 0.5rem;
+        border-radius: 8px;
+    }
+
+    /* Dice */
+    .dice-display {
+        width: 55px;
+        height: 55px;
+        font-size: 1.6rem;
+    }
+
+    .btn-roll {
+        padding: 0.7rem 1.75rem;
+        font-size: 1rem;
+    }
+
+    /* Player Cards */
+    .game-info-panel {
+        gap: 0.5rem;
+    }
+
+    .player-card {
+        min-width: 120px;
+        padding: 0.75rem;
+    }
+
+    .player-card .player-position {
+        font-size: 1.2rem;
+    }
+
+    .player-card .player-name {
+        font-size: 0.85rem;
+    }
+
+    /* Narrator */
+    .narrator-box {
+        padding: 0.75rem 1rem;
+        font-size: 0.85rem;
+    }
+
+    /* Auth */
+    .auth-card {
+        padding: 1.5rem 1.25rem;
+        border-radius: 12px;
+    }
+
+    .auth-card h2 {
+        font-size: 1.25rem;
+    }
+
+    .form-input {
+        padding: 0.65rem 0.85rem;
+        font-size: 0.9rem;
+    }
+
+    .btn-auth {
+        padding: 0.75rem;
+        font-size: 0.95rem;
+    }
+
+    /* Dashboard */
+    .dashboard-welcome h2 {
+        font-size: 1.35rem;
+    }
+
+    .setup-card {
+        padding: 1rem;
+    }
+
+    .option-item {
+        padding: 0.5rem 0.75rem;
+    }
+
+    .btn-start-game {
+        padding: 0.85rem;
+        font-size: 1.05rem;
+    }
+
+    /* Win/Lose Screen */
+    .win-screen,
+    .lose-screen {
+        padding: 1.5rem;
+    }
+
+    .win-screen h2,
+    .lose-screen h2 {
+        font-size: 1.5rem;
+    }
+
+    .win-screen .trophy {
+        font-size: 3rem;
+    }
+
+    .win-screen .score-display {
+        font-size: 2rem;
+    }
+
+    .win-screen .stats-grid {
+        grid-template-columns: 1fr;
+        gap: 0.5rem;
+    }
+
+    /* Path Analysis */
+    .path-comparison {
+        grid-template-columns: 1fr;
+        gap: 0.75rem;
+    }
+
+    .path-column .path-moves {
+        font-size: 1.75rem;
+    }
+
+    /* Bar Chart */
+    .bar-chart {
+        height: 120px;
+        gap: 0.5rem;
+    }
+
+    /* Adventure Recap */
+    .adventure-recap {
+        padding: 1rem;
+    }
+
+    .recap-event {
+        padding: 0.5rem 0.75rem;
+    }
+
+    /* Leaderboard */
+    .leaderboard-table th,
+    .leaderboard-table td {
+        padding: 0.5rem 0.35rem;
+        font-size: 0.7rem;
+    }
+
+    .leaderboard-table .rank-1 { font-size: 1rem; }
+    .leaderboard-table .rank-2 { font-size: 0.95rem; }
+    .leaderboard-table .rank-3 { font-size: 0.9rem; }
+
+    /* Board Legend */
+    .board-legend {
+        gap: 0.35rem;
+        padding: 0.5rem;
+    }
+
+    .legend-item {
+        font-size: 0.65rem;
+    }
+
+    .legend-swatch {
+        width: 12px;
+        height: 12px;
+    }
+
+    /* Probability Map */
+    .probability-map {
+        padding: 1rem;
+    }
+
+    .prob-label {
+        width: 55px;
+        font-size: 0.7rem;
+    }
+
+    .prob-bar-container {
+        height: 16px;
+    }
+
+    /* Cards */
+    .card {
+        padding: 1rem;
+    }
+
+    .card-title {
+        font-size: 1.05rem;
+    }
+
+    /* Buttons */
+    .btn {
+        padding: 0.5rem 1rem;
+        font-size: 0.9rem;
+    }
+
+    /* Footer */
+    .site-footer {
+        padding: 1rem;
+        font-size: 0.75rem;
+    }
+}
+
+/* ---- Extra Small: 360px and below ---- */
+@media screen and (max-width: 360px) {
+
+    .game-board {
+        width: 280px;
+        height: 280px;
+    }
+
+    .board-cell {
+        font-size: 0.45rem;
+    }
+
+    .player-token {
+        width: 12px;
+        height: 12px;
+    }
+
+    .dice-display {
+        width: 48px;
+        height: 48px;
+        font-size: 1.3rem;
+    }
+
+    .auth-card {
+        padding: 1.25rem 1rem;
+    }
+}

@@ -1,0 +1,405 @@
+/* ============================================================
+   Adventures of the Dice — Auth Styles
+   Login, Register, Form Styling
+   CSC 4370/6370 Spring 2026
+   ============================================================ */
+
+/* ---- Auth Page Layout ---- */
+.auth-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 70vh;
+    padding: 2rem 1rem;
+}
+
+/* ---- Auth Card ---- */
+.auth-card {
+    background: #ffffff;
+    border-radius: 16px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.12);
+    padding: 2.5rem;
+    width: 100%;
+    max-width: 440px;
+    animation: authFadeIn 0.5s ease-out;
+}
+
+@keyframes authFadeIn {
+    0%   { opacity: 0; transform: translateY(20px); }
+    100% { opacity: 1; transform: translateY(0); }
+}
+
+.auth-card .auth-icon {
+    text-align: center;
+    font-size: 3rem;
+    margin-bottom: 0.5rem;
+}
+
+.auth-card h2 {
+    text-align: center;
+    font-size: 1.5rem;
+    font-weight: 700;
+    color: #2c6e49;
+    margin-bottom: 0.35rem;
+}
+
+.auth-card .auth-subtitle {
+    text-align: center;
+    font-size: 0.9rem;
+    color: #6c757d;
+    margin-bottom: 1.5rem;
+}
+
+/* ---- Form Group ---- */
+.form-group {
+    margin-bottom: 1.25rem;
+}
+
+.form-group label {
+    display: block;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: #495057;
+    margin-bottom: 0.35rem;
+}
+
+.form-group .required-star {
+    color: #d62828;
+    margin-left: 2px;
+}
+
+/* ---- Input Fields ---- */
+.form-input {
+    width: 100%;
+    padding: 0.75rem 1rem;
+    border: 2px solid #dee2e6;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-family: inherit;
+    color: #1b1b1e;
+    background-color: #f8f9fa;
+    transition: border-color 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+}
+
+.form-input:focus {
+    outline: none;
+    border-color: #2c6e49;
+    background-color: #ffffff;
+    box-shadow: 0 0 0 3px rgba(44, 110, 73, 0.15);
+}
+
+.form-input.input-error {
+    border-color: #d62828;
+    background-color: #fff5f5;
+}
+
+.form-input.input-error:focus {
+    box-shadow: 0 0 0 3px rgba(214, 40, 40, 0.15);
+}
+
+.form-input.input-success {
+    border-color: #06d6a0;
+    background-color: #f0fff4;
+}
+
+/* ---- Error & Success Messages ---- */
+.field-error {
+    display: block;
+    font-size: 0.8rem;
+    color: #d62828;
+    margin-top: 0.3rem;
+    font-weight: 500;
+}
+
+.field-success {
+    display: block;
+    font-size: 0.8rem;
+    color: #06d6a0;
+    margin-top: 0.3rem;
+    font-weight: 500;
+}
+
+/* ---- Submit Button ---- */
+.btn-auth {
+    width: 100%;
+    padding: 0.85rem;
+    background: linear-gradient(135deg, #2c6e49, #4c956c);
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    font-size: 1.05rem;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    margin-top: 0.5rem;
+}
+
+.btn-auth:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 15px rgba(44, 110, 73, 0.3);
+}
+
+.btn-auth:active {
+    transform: translateY(0);
+}
+
+/* ---- Auth Links ---- */
+.auth-links {
+    text-align: center;
+    margin-top: 1.25rem;
+    font-size: 0.9rem;
+    color: #6c757d;
+}
+
+.auth-links a {
+    color: #2c6e49;
+    text-decoration: none;
+    font-weight: 600;
+}
+
+.auth-links a:hover {
+    text-decoration: underline;
+}
+
+/* ---- Password Strength Indicator ---- */
+.password-strength {
+    height: 4px;
+    border-radius: 2px;
+    margin-top: 0.5rem;
+    background: #e9ecef;
+    overflow: hidden;
+}
+
+.password-strength-bar {
+    height: 100%;
+    border-radius: 2px;
+    transition: width 0.3s ease, background-color 0.3s ease;
+}
+
+.strength-weak    { width: 33%; background-color: #d62828; }
+.strength-medium  { width: 66%; background-color: #f77f00; }
+.strength-strong  { width: 100%; background-color: #06d6a0; }
+
+/* ---- Dashboard Styles (used after login) ---- */
+.dashboard-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.dashboard-welcome {
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+.dashboard-welcome h2 {
+    font-size: 1.75rem;
+    color: #2c6e49;
+    margin-bottom: 0.35rem;
+}
+
+.dashboard-welcome p {
+    color: #6c757d;
+    font-size: 1rem;
+}
+
+/* ---- Game Setup Cards ---- */
+.setup-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+}
+
+.setup-card {
+    background: #ffffff;
+    border-radius: 12px;
+    padding: 1.5rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+    transition: box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+.setup-card:hover {
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    transform: translateY(-2px);
+}
+
+.setup-card h3 {
+    font-size: 1.1rem;
+    color: #2c6e49;
+    margin-bottom: 0.75rem;
+}
+
+/* ---- Radio / Select Styled Groups ---- */
+.option-group {
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+}
+
+.option-item {
+    display: flex;
+    align-items: center;
+    gap: 0.65rem;
+    padding: 0.65rem 1rem;
+    border: 2px solid #dee2e6;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: border-color 0.3s ease, background-color 0.3s ease;
+}
+
+.option-item:hover {
+    border-color: #4c956c;
+    background-color: #f1f8e9;
+}
+
+.option-item input[type="radio"] {
+    accent-color: #2c6e49;
+    width: 18px;
+    height: 18px;
+    cursor: pointer;
+}
+
+.option-item.selected {
+    border-color: #2c6e49;
+    background-color: #e8f5e9;
+}
+
+.option-item .option-label {
+    font-weight: 600;
+    color: #1b1b1e;
+    font-size: 0.95rem;
+}
+
+.option-item .option-desc {
+    font-size: 0.8rem;
+    color: #6c757d;
+    margin-top: 0.15rem;
+}
+
+/* ---- Difficulty Option Colors ---- */
+.option-item.opt-beginner.selected {
+    border-color: #2e7d32;
+    background-color: #e8f5e9;
+}
+
+.option-item.opt-standard.selected {
+    border-color: #f57f17;
+    background-color: #fff8e1;
+}
+
+.option-item.opt-expert.selected {
+    border-color: #c62828;
+    background-color: #ffebee;
+}
+
+/* ---- AI Strategy Option Colors ---- */
+.option-item.opt-easy.selected {
+    border-color: #43a047;
+    background-color: #e8f5e9;
+}
+
+.option-item.opt-medium.selected {
+    border-color: #fb8c00;
+    background-color: #fff3e0;
+}
+
+.option-item.opt-hard.selected {
+    border-color: #e53935;
+    background-color: #ffebee;
+}
+
+/* ---- Start Game Button ---- */
+.btn-start-game {
+    width: 100%;
+    padding: 1rem;
+    background: linear-gradient(135deg, #1b4332, #2c6e49);
+    color: #ffffff;
+    border: none;
+    border-radius: 12px;
+    font-size: 1.2rem;
+    font-weight: 700;
+    cursor: pointer;
+    letter-spacing: 0.5px;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.btn-start-game:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 20px rgba(27, 67, 50, 0.35);
+}
+
+.btn-start-game:active {
+    transform: translateY(0);
+}
+
+/* ---- Leaderboard Table ---- */
+.leaderboard-table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #ffffff;
+    border-radius: 8px;
+    overflow: hidden;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.12);
+}
+
+.leaderboard-table thead {
+    background: linear-gradient(135deg, #2c6e49, #4c956c);
+    color: #ffffff;
+}
+
+.leaderboard-table th {
+    padding: 0.85rem 1rem;
+    text-align: left;
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.leaderboard-table td {
+    padding: 0.75rem 1rem;
+    font-size: 0.9rem;
+    color: #495057;
+    border-bottom: 1px solid #e9ecef;
+}
+
+.leaderboard-table tbody tr:hover {
+    background-color: #f1f8e9;
+}
+
+.leaderboard-table .rank-cell {
+    font-weight: 800;
+    text-align: center;
+    width: 50px;
+}
+
+.leaderboard-table .rank-1 { color: #ffd600; font-size: 1.2rem; }
+.leaderboard-table .rank-2 { color: #90a4ae; font-size: 1.1rem; }
+.leaderboard-table .rank-3 { color: #a1887f; font-size: 1.05rem; }
+
+.leaderboard-table .score-cell {
+    font-weight: 700;
+    color: #2c6e49;
+}
+
+/* ---- Empty State ---- */
+.empty-state {
+    text-align: center;
+    padding: 3rem 1.5rem;
+    color: #6c757d;
+}
+
+.empty-state .empty-icon {
+    font-size: 3rem;
+    margin-bottom: 1rem;
+}
+
+.empty-state h3 {
+    font-size: 1.15rem;
+    margin-bottom: 0.5rem;
+    color: #495057;
+}
+
+.empty-state p {
+    font-size: 0.9rem;
+}
